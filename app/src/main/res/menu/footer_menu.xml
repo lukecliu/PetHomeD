@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/footer_petcircle" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="Pet Circle" />
+    <item android:id="@+id/footer_petbluetooth" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="Pet Bluetooth" />
+    <item android:id="@+id/footer_memo" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="Pet Memo" />
+    <item android:id="@+id/footer_feedback" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="Feedback" />
+    <item android:id="@+id/footer_membership" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="Membership" />
+
+</menu>

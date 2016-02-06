@@ -12,14 +12,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity{
  //      implements NavigationView.OnNavigationItemSelectedListener {
 
+    ImageDescAdapter adapter;
+    public ArrayList<ImageDescModel> model_list = new ArrayList<ImageDescModel>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.aboutus_page);
+        setContentView(R.layout.img_desc_layout);
 
 /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,7 +55,36 @@ public class MainActivity extends AppCompatActivity{
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 */
+
+
+
+        //// setup GridView adapter & it's model
+        setData();
+;
+        GridView grid= (GridView)findViewById( R.id.gridview_imgdesc );  // List defined in XML ( See Below )
+
+        adapter=new ImageDescAdapter( this, model_list, getResources() );
+        grid.setAdapter( adapter );
+
     }
+
+    private void setData() {
+
+        for (int i = 0; i < 11; i++) {
+
+            final ImageDescModel sched = new ImageDescModel();
+
+            /******* Firstly take data in model object ******/
+            sched.setImageName("image"+i);
+            sched.setDescription1("Cap"+i);
+            sched.setDescription2("觀看人數: " + i);
+
+            /******** Take Model Object in ArrayList **********/
+            model_list.add( sched );
+        }
+
+    }
+
 
 
     /*
@@ -126,5 +163,18 @@ public class MainActivity extends AppCompatActivity{
         return true;
     }
 */
+
+    public void onItemClick(int mPosition)
+    {
+        ImageDescModel tempItem = ( ImageDescModel ) model_list.get(mPosition);
+
+        //TODO: Replace with your own action, now just a stub
+        Toast.makeText(this,
+                "Image:" + tempItem.getImageName() + "\n" +
+                        "Description1: " + tempItem.getDescription1() + "\n" +
+                        "Description2: " + tempItem.getDescription2(),
+                Toast.LENGTH_SHORT)
+        .show();
+    }
 
 }
