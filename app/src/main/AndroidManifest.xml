@@ -18,6 +18,70 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".InfoActivity"
+            android:label="@string/title_info_activity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cl.pethomed.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CircleActivity"
+            android:label="@string/title_circle_activity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cl.pethomed.MainActivity" />
+        </activity>
+        <activity
+            android:name=".VideoActivity"
+            android:label="@string/title_video_activity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cl.pethomed.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AdoptionActivity"
+            android:label="@string/title_adoption_activity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cl.pethomed.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ShopActivity"
+            android:label="@string/title_shop_activity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cl.pethomed.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MemoActivity"
+            android:label="@string/title_memo_activity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cl.pethomed.MainActivity" />
+        </activity>
+        <activity
+            android:name=".FeatureActivity"
+            android:label="@string/title_feature_activity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cl.pethomed.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_about_activity"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.cl.pethomed.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

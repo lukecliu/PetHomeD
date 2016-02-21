@@ -5,12 +5,16 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:fitsSystemWindows="true" tools:openDrawer="start">
 
-    <include layout="@layout/app_bar_main" android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <FrameLayout
+        android:id="@+id/main_content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include layout="@layout/app_bar_main" />
 
     <android.support.design.widget.NavigationView android:id="@+id/nav_view"
         android:layout_width="150dp" android:layout_height="match_parent"
-        android:layout_gravity="start" android:fitsSystemWindows="true"
+        android:layout_gravity="start" android:fitsSystemWindows="false"
         app:menu="@menu/activity_main_drawer"
         android:background="@color/colorPrimary" />
 

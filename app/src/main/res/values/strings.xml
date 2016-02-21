@@ -5,4 +5,13 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="title_info_activity">Pet Info</string>
+    <string name="title_circle_activity">Pet Circle</string>
+    <string name="title_video_activity">Pet Video</string>
+    <string name="title_adoption_activity">Pet Adoption</string>
+    <string name="title_shop_activity">Pet Shop</string>
+    <string name="title_feature_activity">Pet Suggestion</string>
+    <string name="title_memo_activity">Pet Memo</string>
+    <string name="title_about_activity">About Us</string>
 </resources>

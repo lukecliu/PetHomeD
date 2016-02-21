@@ -2,37 +2,47 @@ package com.cl.pethomed;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Liu on 2016/02/06.
  */
-public class ImageDescAdapter extends BaseAdapter
-    implements OnClickListener {
+public class ImageDescAdapter extends BaseAdapter {
+//    implements OnClickListener {
 
     private Activity activity;
     private ArrayList data;
     ImageDescModel tempItem=null;
+    int item_layout_id;
+    int imageview_id;
+    List<Integer> textview_id_list = new ArrayList<>();
 
     private static LayoutInflater inflater=null;
     public Resources res;
-    int i=0;
 
-    public ImageDescAdapter(Activity activity, ArrayList data, Resources res) {
+
+    public ImageDescAdapter(Activity activity, ArrayList data, Resources res,
+                            int item_layout_id, int imageview_id, int[] textview_id_list) {
         this.activity = activity;
         this.data = data;
         this.res = res;
+        this.item_layout_id = item_layout_id;
+        this.imageview_id = imageview_id;
+
+        if (textview_id_list != null){
+            for (int id : textview_id_list) {
+                this.textview_id_list.add(id);
+            }
+        }
 
         inflater = ( LayoutInflater )activity.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -66,12 +76,22 @@ public class ImageDescAdapter extends BaseAdapter
 
         if(vi==null){
 
-            vi = inflater.inflate(R.layout.img_desc_item, null);
+            vi = inflater.inflate(item_layout_id, null);
 
             holder = new ViewHolder();
-            holder.image=(ImageView)vi.findViewById(R.id.img_desc_item_imageview);
-            holder.text1 = (TextView) vi.findViewById(R.id.img_desc_item_textView1);
-            holder.text2=(TextView)vi.findViewById(R.id.img_desc_item_textView2);
+            holder.imageview=(ImageView)vi.findViewById(imageview_id);
+            for(int i = 0; i < textview_id_list.size(); i++){
+                if(i >= holder.textview_list.size()){
+                    holder.textview_list.add(
+                            (TextView) vi.findViewById(textview_id_list.get(i))
+                            );
+                }else{
+                    holder.textview_list.set(
+                            i,
+                            (TextView) vi.findViewById(textview_id_list.get(i))
+                    );
+                }
+            }
 
             vi.setTag( holder );
         }
@@ -80,7 +100,7 @@ public class ImageDescAdapter extends BaseAdapter
 
         if(data.size()<=0)
         {
-            holder.text1.setText("No Data");
+//            holder.text1.setText("No Data");
 
         }
         else
@@ -89,47 +109,61 @@ public class ImageDescAdapter extends BaseAdapter
             tempItem = ( ImageDescModel ) data.get( position );
 
 
-            holder.text1.setText( tempItem.getDescription1() );
-            holder.text2.setText( tempItem.getDescription2() );
-            holder.image.setImageResource(
+            for(int i = 0; i < textview_id_list.size(); i++){
+                if(i >= holder.textview_list.size()){
+                    holder.textview_list.add(
+                            (TextView) vi.findViewById(textview_id_list.get(i))
+                    );
+                }else{
+                    holder.textview_list.set(
+                            i,
+                            (TextView) vi.findViewById(textview_id_list.get(i))
+                    );
+                }
+            }
+
+            for(int i = 0; i < holder.textview_list.size(); i++){
+                holder.textview_list.get(i).setText(tempItem.getDescription(i));
+            }
+            holder.imageview.setImageResource(
                     res.getIdentifier(  //TODO: exception handling on name not-found
-                            "com.cl.pethomed:drawable/"+tempItem.getImageName()
-                            ,null,null));
+                            "com.cl.pethomed:drawable/" + tempItem.getImageName()
+                            , null, null));
 
 
-            vi.setOnClickListener(new OnItemClickListener( position ));
+//            vi.setOnClickListener(new OnItemClickListener( position ));
         }
         return vi;
 
-        //return convertView;
     }
 
-    private class OnItemClickListener implements OnClickListener{
-        private int mPosition;
+//    private class OnItemClickListener implements OnClickListener{
+//        private int mPosition;
+//
+//        OnItemClickListener(int position){
+//            mPosition = position;
+//        }
+//
+//        @Override
+//        public void onClick(View arg0) {
+//
+//            AdoptionFragment target_jump_call = (AdoptionFragment)
+//                    (((AppCompatActivity)activity).getSupportFragmentManager().findFragmentById(R.id.adoption_content_frame));
+//            target_jump_call.onItemClick(mPosition);
+//        }
+//    }
+//
+//
+//    @Override
+//    public void onClick(View v) {
+//        Log.v("ImageDescAdapter","Model Clicked");
+//    }
 
-        OnItemClickListener(int position){
-            mPosition = position;
-        }
+    private class ViewHolder{
 
-        @Override
-        public void onClick(View arg0) {
+        public ImageView imageview;
+        public List<TextView> textview_list = new ArrayList<>();
 
-            MainActivity target_jump_call = (MainActivity)activity;
-            target_jump_call.onItemClick(mPosition);
-        }
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        Log.v("ImageDescAdapter","Model Clicked");
-    }
-
-    public static class ViewHolder{
-
-        public ImageView image;
-        public TextView text1;
-        public TextView text2;
     }
 
 }

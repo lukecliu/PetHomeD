@@ -1,5 +1,6 @@
 package com.cl.pethomed;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,21 +19,24 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity{
- //      implements NavigationView.OnNavigationItemSelectedListener {
-
-    ImageDescAdapter adapter;
-    public ArrayList<ImageDescModel> model_list = new ArrayList<ImageDescModel>();
+public class MainActivity extends AppCompatActivity
+       implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.img_desc_layout);
+        setContentView(R.layout.activity_main);
 
-/*
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.main_content_frame, new HomepageFragment())
+                    .commit();
+        }
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-*/
+
 
         /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity{
         });
         */
 
-/*
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -54,36 +58,11 @@ public class MainActivity extends AppCompatActivity{
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-*/
 
-
-
-        //// setup GridView adapter & it's model
-        setData();
-;
-        GridView grid= (GridView)findViewById( R.id.gridview_imgdesc );  // List defined in XML ( See Below )
-
-        adapter=new ImageDescAdapter( this, model_list, getResources() );
-        grid.setAdapter( adapter );
 
     }
 
-    private void setData() {
 
-        for (int i = 0; i < 11; i++) {
-
-            final ImageDescModel sched = new ImageDescModel();
-
-            /******* Firstly take data in model object ******/
-            sched.setImageName("image"+i);
-            sched.setDescription1("Cap"+i);
-            sched.setDescription2("觀看人數: " + i);
-
-            /******** Take Model Object in ArrayList **********/
-            model_list.add( sched );
-        }
-
-    }
 
 
 
@@ -124,7 +103,7 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-/*
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -132,49 +111,46 @@ public class MainActivity extends AppCompatActivity{
 
 
         //Handle menu item action
-        if (id == R.id.nav_item1) {
-
-        } else if (id == R.id.nav_item2) {
-
-        } else if (id == R.id.nav_item3) {
-
-        } else if (id == R.id.nav_item4) {
-
-        } else if (id == R.id.nav_item5) {
-
-        } else if (id == R.id.nav_item6) {
-
-        } else if (id == R.id.nav_item7) {
-
-        } else if (id == R.id.nav_item8) {
-
-        } else if (id == R.id.nav_item9) {
-
-        } else if (id == R.id.nav_item10) {
-
-        } else if (id == R.id.nav_item11) {
-
+        if (id == R.id.nav_info) {
+            startActivity(new Intent(this, InfoActivity.class));
+            return true;
+        } else if (id == R.id.nav_circle) {
+            startActivity(new Intent(this, CircleActivity.class));
+            return true;
+        } else if (id == R.id.nav_video) {
+            startActivity(new Intent(this, VideoActivity.class));
+            return true;
+        } else if (id == R.id.nav_adoption) {
+            startActivity(new Intent(this, AdoptionActivity.class));
+            return true;
+        } else if (id == R.id.nav_shop) {
+            startActivity(new Intent(this, ShopActivity.class));
+            return true;
+        } else if (id == R.id.nav_memo) {
+            startActivity(new Intent(this, MemoActivity.class));
+            return true;
+        } else if (id == R.id.nav_feature) {
+            startActivity(new Intent(this, FeatureActivity.class));
+            return true;
+        } else if (id == R.id.nav_Tag) {
+            //TODO: write custom action here
+            Toast.makeText(this, "No pet-tracking devices detected.", Toast.LENGTH_LONG).show();
+            return true;
+        } else if (id == R.id.nav_card) {
+            //TODO: write custom action here
+            Toast.makeText(this, "No pet card detected.", Toast.LENGTH_LONG).show();
+            return true;
+        } else if (id == R.id.nav_aboutus) {
+            startActivity(new Intent(this, AboutActivity.class));
+            return true;
+        } else if (id == R.id.nav_setting) {
+            //TODO: write custom setting
+            Toast.makeText(this, "Write custom setting here", Toast.LENGTH_LONG).show();
         }
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-*/
-
-    public void onItemClick(int mPosition)
-    {
-        ImageDescModel tempItem = ( ImageDescModel ) model_list.get(mPosition);
-
-        //TODO: Replace with your own action, now just a stub
-        Toast.makeText(this,
-                "Image:" + tempItem.getImageName() + "\n" +
-                        "Description1: " + tempItem.getDescription1() + "\n" +
-                        "Description2: " + tempItem.getDescription2(),
-                Toast.LENGTH_SHORT)
-        .show();
     }
 
 }

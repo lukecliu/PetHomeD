@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/nav_item1" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 1"  />
-    <item android:id="@+id/nav_item2" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 2" />
-    <item android:id="@+id/nav_item3" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 3" />
-    <item android:id="@+id/nav_item4" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 4" />
-    <item android:id="@+id/nav_item5" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 5" />
-    <item android:id="@+id/nav_item6" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 6" />
-    <item android:id="@+id/nav_item7" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 7" />
-    <item android:id="@+id/nav_item8" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 8" />
-    <item android:id="@+id/nav_item9" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 9" />
-    <item android:id="@+id/nav_item10" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 10" />
-    <item android:id="@+id/nav_item11" android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Item 11" />
+    <item android:id="@+id/nav_info" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="info"  />
+    <item android:id="@+id/nav_circle" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="circle" />
+    <item android:id="@+id/nav_video" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="video" />
+    <item android:id="@+id/nav_adoption" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="adoption" />
+    <item android:id="@+id/nav_shop" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="shop" />
+    <item android:id="@+id/nav_memo" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="memo" />
+    <item android:id="@+id/nav_feature" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="feature" />
+    <item android:id="@+id/nav_Tag" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="Tag" />
+    <item android:id="@+id/nav_card" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="Card" />
+    <item android:id="@+id/nav_aboutus" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="us" />
+    <item android:id="@+id/nav_setting" android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="setting" />
 
 </menu>

@@ -1,43 +1,43 @@
 package com.cl.pethomed;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by Liu on 2016/02/06.
  */
 public class ImageDescModel {
 
-    private  String image_name="";
-    private  String desc1="";
-    private  String desc2="";
+    private String image_name="";
+    private List<String> desc_list = new ArrayList<>();
 
     public ImageDescModel(){}
-    public ImageDescModel(String name, String description1, String description2){
-        this.image_name = name;
-        this.desc1 = description1;
-        this.desc2 = description2;
+    public ImageDescModel(String img_name, String[] descs){
+        this.image_name = img_name;
+        Collections.addAll(this.desc_list,descs);
     }
 
-
     public String getImageName() {
-        return image_name;
+        return this.image_name;
     }
 
     public void setImageName(String image_name) {
         this.image_name = image_name;
     }
 
-    public String getDescription1() {
-        return desc1;
+    public String getDescription(int index) {
+        if(index < 0 || index >= this.desc_list.size()){ return "";}
+        return this.desc_list.get(index);
     }
 
-    public void setDescription1(String desc1) {
-        this.desc1 = desc1;
+    public int getDescSize(){
+        return this.desc_list.size();
     }
 
-    public String getDescription2() {
-        return desc2;
+    public void addDescription(String desc) {
+        this.desc_list.add(desc);
     }
 
-    public void setDescription2(String desc2) {
-        this.desc2 = desc2;
-    }
+
 }
