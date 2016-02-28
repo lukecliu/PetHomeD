@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -57,7 +56,7 @@ public class AdoptionFragment extends Fragment {
         GridView grid= (GridView)rootView.findViewById( R.id.gridview_imgdesc );
 
         adapter=new ImageDescAdapter( this.getActivity(), model_list, getResources(),
-                R.layout.img_desc_item,
+                R.layout.img_desc_item_type2,
                 R.id.img_desc_item_imageview,
                 new int[]{R.id.img_desc_item_textView1, R.id.img_desc_item_textView2 });
 

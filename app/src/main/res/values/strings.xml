@@ -14,4 +14,5 @@
     <string name="title_feature_activity">Pet Suggestion</string>
     <string name="title_memo_activity">Pet Memo</string>
     <string name="title_about_activity">About Us</string>
+    <string name="title_map_activity">Shop Map</string>
 </resources>

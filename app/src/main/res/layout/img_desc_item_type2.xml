@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/img_desc_item_textView1"
             android:layout_gravity="left"
-            android:textColor="#959595" />
+            android:textColor="#d7d7d7" />
 
         <TextView
             android:layout_width="match_parent"

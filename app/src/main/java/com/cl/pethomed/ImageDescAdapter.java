@@ -49,6 +49,11 @@ public class ImageDescAdapter extends BaseAdapter {
 
     }
 
+    public void addPair(String data, int textview_id){
+        this.data.add(data);
+        this.textview_id_list.add(textview_id);
+    }
+
     @Override
     public int getCount() {
         if(data.size()<0)
