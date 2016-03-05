@@ -2,6 +2,7 @@ package com.cl.pethomed;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,10 @@ public class FeatureFragment extends Fragment {
     ImageDescAdapter adapter;
     public ArrayList<ImageDescModel> model_list = new ArrayList<>();
 
+    ImageSliderAdapter imageFragmentPagerAdapter;
+    ViewPager viewPager;
+    ArrayList<String> image_slider_list = new ArrayList<>();
+
     public FeatureFragment() {
     }
 
@@ -31,6 +36,7 @@ public class FeatureFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_feature, container, false);
 
+        //// setup GridView adapter & it's model
         setData();
         GridView grid= (GridView)rootView.findViewById( R.id.feature_gridview );
 
@@ -40,6 +46,11 @@ public class FeatureFragment extends Fragment {
                 new int[]{R.id.img_desc_item_textView1, R.id.img_desc_item_textView2 });
 
         grid.setAdapter( adapter );
+
+        //// setup viewpager adapter
+        imageFragmentPagerAdapter = new ImageSliderAdapter(this.getFragmentManager(), image_slider_list.toArray(new String[0]));
+        viewPager = (ViewPager) rootView.findViewById(R.id.feature_viewpager);
+        viewPager.setAdapter(imageFragmentPagerAdapter);
 
         return rootView;
     }
@@ -115,6 +126,9 @@ public class FeatureFragment extends Fragment {
         sched.addDescription("特價：4,390元");
         model_list.add(sched);
 
+        for (int i = 0; i < 5; i++) {
+            image_slider_list.add("image" + i);
+        }
 
     }
 }

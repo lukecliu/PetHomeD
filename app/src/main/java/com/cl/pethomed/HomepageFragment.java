@@ -19,13 +19,11 @@ import java.util.ArrayList;
 public class HomepageFragment extends Fragment {
 
     ImageDescAdapter adapter;
-    public ArrayList<ImageDescModel> model_list = new ArrayList<>();
+    ArrayList<ImageDescModel> model_list = new ArrayList<>();
 
-
-    ImageFragmentPagerAdapter imageFragmentPagerAdapter;
+    ImageSliderAdapter imageFragmentPagerAdapter;
     ViewPager viewPager;
-    static final int NUM_ITEMS = 6;
-    public static final String[] IMAGE_NAME = {"image0", "image1", "image2", "image3", "image4", "image5",};
+    ArrayList<String> image_slider_list = new ArrayList<>();
 
     public HomepageFragment() {
     }
@@ -41,6 +39,7 @@ public class HomepageFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_homepage, container, false);
 
+        //// setup gridview adapter
         setData();
         GridView grid= (GridView)rootView.findViewById( R.id.homepage_gridView );
 
@@ -51,7 +50,8 @@ public class HomepageFragment extends Fragment {
 
         grid.setAdapter(adapter);
 
-        imageFragmentPagerAdapter = new ImageFragmentPagerAdapter(this.getFragmentManager());
+        //// setup viewpager adapter
+        imageFragmentPagerAdapter = new ImageSliderAdapter(this.getFragmentManager(), image_slider_list.toArray(new String[0]));
         viewPager = (ViewPager) rootView.findViewById(R.id.hompage_viewpager);
         viewPager.setAdapter(imageFragmentPagerAdapter);
         return rootView;
@@ -60,62 +60,15 @@ public class HomepageFragment extends Fragment {
     private void setData() {
 
         for (int i = 0; i < 11; i++) {
-
             final ImageDescModel sched = new ImageDescModel();
-
-            ///
             sched.setImageName("image" + i);
-
-            ///
             model_list.add( sched );
         }
 
-    }
-
-
-    public static class ImageFragmentPagerAdapter extends FragmentPagerAdapter {
-
-        public ImageFragmentPagerAdapter(FragmentManager fm) {
-            super(fm);
+        for (int i = 0; i < 5; i++) {
+            image_slider_list.add("image" + i);
         }
 
-        @Override
-        public int getCount() {
-            return NUM_ITEMS;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            SwipeFragment fragment = new SwipeFragment();
-            return SwipeFragment.newInstance(position);
-        }
-
-
-    }
-
-
-    public static class SwipeFragment extends Fragment {
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootview = inflater.inflate(R.layout.viewpager_item_type1, container, false);
-
-            ImageView imageView = (ImageView) rootview.findViewById(R.id.item_imageview);
-            Bundle bundle = getArguments();
-            int position = bundle.getInt("position");
-            String imageFileName = IMAGE_NAME[position];
-            int imgResId = getResources().getIdentifier(imageFileName, "drawable", "com.cl.pethomed");
-            imageView.setImageResource(imgResId);
-            return rootview;
-        }
-
-        static SwipeFragment newInstance(int position) {
-            SwipeFragment swipeFragment = new SwipeFragment();
-            Bundle bundle = new Bundle();
-            bundle.putInt("position", position);
-            swipeFragment.setArguments(bundle);
-            return swipeFragment;
-        }
     }
 
 }

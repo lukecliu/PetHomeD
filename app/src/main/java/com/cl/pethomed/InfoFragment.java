@@ -2,6 +2,7 @@ package com.cl.pethomed;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,10 @@ public class InfoFragment extends Fragment {
 
     ImageDescAdapter adapter;
     public ArrayList<ImageDescModel> model_list = new ArrayList<>();
+
+    ImageSliderAdapter imageFragmentPagerAdapter;
+    ViewPager viewPager;
+    ArrayList<String> image_slider_list = new ArrayList<>();
 
     public InfoFragment() {
     }
@@ -44,6 +49,12 @@ public class InfoFragment extends Fragment {
         );
 
         grid.setAdapter(adapter);
+
+        //// setup viewpager adapter
+        imageFragmentPagerAdapter = new ImageSliderAdapter(this.getFragmentManager(), image_slider_list.toArray(new String[0]));
+        viewPager = (ViewPager) rootView.findViewById(R.id.info_viewpager);
+        viewPager.setAdapter(imageFragmentPagerAdapter);
+
         return rootView;
     }
 
@@ -137,6 +148,10 @@ public class InfoFragment extends Fragment {
                 "光良在身後支撐著狗狗向前，感人的一幕讓網友直呼太催淚。");
         model_list.add(sched);
 
+
+        for (int i = 0; i < 5; i++) {
+            image_slider_list.add("image" + i);
+        }
 
     }
 
